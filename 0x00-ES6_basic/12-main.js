@@ -8,4 +8,4 @@ const employees = {
 
 const report = createReportObject(employees);
 console.log(report.allEmployees);
-console.log(report.getNumberOfDepartments(report.allEmployees.employeesList));
+console.log(report.getNumberOfDepartments(report.allEmployees));
