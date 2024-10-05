@@ -11,9 +11,9 @@ export default class HolbertonCourse {
    * @throws {Error} Will throw a TypeError if any parameter has the wrong type.
    */
   constructor(name, length, students) {
-    this.name = name;
-    this.length = length;
-    this.students = students;
+    this._name = name;
+    this._length = length;
+    this._students = students;
   }
 
   /**
@@ -61,7 +61,7 @@ export default class HolbertonCourse {
    * Sets the names of students in this course.
    */
   set students(students) {
-    if (Array.isArray(students)) {
+    if (!(students instanceof Array)) {
       throw new TypeError('Students must be an array of strings');
     }
     if (!students.every((student) => typeof student === 'string')) {
