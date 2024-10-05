@@ -6,11 +6,11 @@ export default class Building {
     }
   }
 
-  get sqrt() {
+  get sqft() {
     return this._sqft;
   }
 
-  set sqrt(sqft) {
+  set sqft(sqft) {
     this._sqft = sqft;
   }
 }
