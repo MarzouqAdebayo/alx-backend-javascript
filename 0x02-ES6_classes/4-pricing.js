@@ -24,8 +24,12 @@ export default class Pricing {
 
   /**
    * Set the amount
+   * @throws {TypeError} Will throw a TypeError if any parameter has the wrong type.
    */
   set amount(amount) {
+    if (typeof amount !== 'number') {
+      throw new TypeError('amount must be a number');
+    }
     this._amount = amount;
   }
 
@@ -39,8 +43,12 @@ export default class Pricing {
 
   /**
    * Set the currency
+   * @throws {TypeError} Will throw a TypeError if any parameter has the wrong type.
    */
   set currency(currency) {
+    if (!(currency instanceof Currency)) {
+      throw new TypeError('currency must be a Currency');
+    }
     this._currency = currency;
   }
 
@@ -63,8 +71,15 @@ export default class Pricing {
   /**
    * Convert currency
    * @returns {number} The converted amount
+   * @throws {TypeError} Will throw a TypeError if any parameter has the wrong type.
    */
   static convertPrice(amount, conversionRate) {
+    if (typeof amount !== 'number') {
+      throw new TypeError('amount must be a number');
+    }
+    if (typeof conversionRate !== 'number') {
+      throw new TypeError('conversionRate must be a number');
+    }
     return amount * conversionRate;
   }
 }
