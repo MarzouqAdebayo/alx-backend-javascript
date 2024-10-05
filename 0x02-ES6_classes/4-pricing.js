@@ -14,12 +14,12 @@ export default class Pricing {
      * The amount
      * @type {number}
      */
-    this._amount = amount;
+    this.amount = amount;
     /**
      * The currency
      * @type {Currency}
      */
-    this._currency = currency;
+    this.currency = currency;
   }
 
   /**
