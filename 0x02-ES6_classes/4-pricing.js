@@ -64,7 +64,7 @@ export default class Pricing {
    * Display the full string representation of the price
    * @returns {string} The full string representation of the Price
    */
-  displayFullCurrency() {
+  displayFullPrice() {
     return `${this.amount} ${this.currency.name} (${this.currency.code})`;
   }
 
