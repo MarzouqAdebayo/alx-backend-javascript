@@ -61,7 +61,10 @@ export default class HolbertonCourse {
    * Sets the names of students in this course.
    */
   set students(students) {
-    if (!(students instanceof Array)) {
+    // if (!(students instanceof Array)) {
+    //  throw new TypeError('Students must be an array of strings');
+    // }
+    if (!Array.isArray(students)) {
       throw new TypeError('Students must be an array of strings');
     }
     if (!students.every((student) => typeof student === 'string')) {
