@@ -11,9 +11,9 @@ export default class HolbertonCourse {
    * @throws {Error} Will throw a TypeError if any parameter has the wrong type.
    */
   constructor(name, length, students) {
-    this._name = name;
-    this._length = length;
-    this._students = students;
+    this.name = name;
+    this.length = length;
+    this.students = students;
   }
 
   /**
