@@ -1,10 +1,9 @@
 export default function cleanSet(set, startString) {
   const arr = [];
-  if (set instanceof Set) {
+  if (set instanceof Set && typeof startString === 'string') {
     for (const str of set) {
       if (
-        startString
-        && typeof startString === 'string'
+        startString.length
         && str.startsWith(startString)
       ) {
         arr.push(str.slice(startString.length));
