@@ -1,11 +1,14 @@
 export default function cleanSet(set, startString) {
+  if (!startString || typeof startString !== 'string') {
+    return '';
+  }
+
   const arr = [];
-  if (set instanceof Set && typeof startString === 'string' && startString) {
-    for (const str of set.value()) {
-      if (str.startsWith(startString)) {
-        arr.push(str.slice(startString.length));
-      }
+  for (const value of set) {
+    if (typeof value === 'string' && value.startsWith(startString)) {
+      arr.push(value.slice(startString.length));
     }
   }
+
   return arr.join('-');
 }
