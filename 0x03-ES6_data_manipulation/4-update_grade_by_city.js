@@ -15,6 +15,6 @@ export default function updateStudentGradeByCity(
       if (!studentGrade.length) {
         return { ...student, grade: 'N/A' };
       }
-      return { ...student, grade: studentGrade[0] };
+      return { ...student, grade: studentGrade[0].grade };
     });
 }
