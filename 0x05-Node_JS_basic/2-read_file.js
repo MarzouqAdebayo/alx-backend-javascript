@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 /**
- * @typedef {Object.<string, string[]>} StringArrayMap
+ * @typedef {Object.<string, Object.<string, string>[]>} StringArrayMap
  */
 /**
  * countStudents - Counts the number of students in a csv db
@@ -21,6 +21,7 @@ function countStudents(path) {
     const header = lines[0].split(',');
 
     // Dynamically find column indices
+    /** @type { StringArrayMap } */
     const studentGroups = {};
     const studentData = [];
 
