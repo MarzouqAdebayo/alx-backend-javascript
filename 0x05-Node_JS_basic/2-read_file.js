@@ -14,7 +14,10 @@ function countStudents(path) {
     const allFields = lines[0].split(',');
     const nameIdx = allFields.indexOf('firstname');
     const fieldIdx = allFields.indexOf('field');
-    const csvArr = lines.slice(1).map((line) => line.split(','));
+    const csvArr = lines
+      .slice(1)
+      .filter((line) => line.trim().length)
+      .map((line) => line.split(','));
     /** @type {StringArrayMap} */
     const groupByField = {};
     csvArr.forEach((student) => {
