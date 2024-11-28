@@ -18,7 +18,7 @@ function countStudents(path = './database.csv') {
     const sweStudents = csvArr.filter((student) => student.includes('SWE'));
     const sweStudentsNames = sweStudents.map((student) => student[0]);
     console.log(
-      `Number of students in CS: ${sweStudents.length}. List: ${sweStudentsNames.join(', ')}`,
+      `Number of students in SWE: ${sweStudents.length}. List: ${sweStudentsNames.join(', ')}`,
     );
   } catch (error) {
     throw new Error('Cannot load the database');
