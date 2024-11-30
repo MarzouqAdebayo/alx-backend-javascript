@@ -10,7 +10,7 @@ describe('Send payment request to api', () => {
 
     stub.returns(10);
     sendPaymentRequestToApi(100, 20);
-    expect(stub.calledOnceWithExactly('SUM', 100, 200)).to.be.true;
+    expect(stub.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
     expect(consoleSpy.log.calledOnceWithExactly('The total is: 10')).to.be.true;
     consoleSpy.log.restore();
     stub.restore();
