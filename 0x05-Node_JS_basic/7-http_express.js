@@ -1,4 +1,4 @@
-const http = require('http');
+const Express = require('express');
 const fs = require('fs');
 
 /**
@@ -64,16 +64,12 @@ function countStudents(path) {
   });
 }
 
-const PORT = 1245;
-const HOST = 'localhost';
-const app = http.createServer();
-
 const homeRequestHandler = (_, res) => {
   const responseText = 'Hello Holberton School!';
-  res.setHeader('Content-Type', 'text/plain');
-  res.setHeader('Content-Length', responseText.length);
+  res.header('Content-Type', 'text/plain');
+  res.header('Content-Length', responseText.length);
   res.statusCode = 200;
-  res.write(Buffer.from(responseText));
+  res.status(200).send(Buffer.from(responseText));
 };
 
 const statusRequestHandler = (_, res) => {
@@ -82,28 +78,27 @@ const statusRequestHandler = (_, res) => {
   countStudents(path)
     .then((data) => {
       const responseText = resTitle + data.trim();
-      res.setHeader('Content-Type', 'text/plain');
-      res.setHeader('Content-Length', responseText.length);
+      res.header('Content-Type', 'text/plain');
+      res.header('Content-Length', responseText.length);
       res.statusCode = 200;
-      res.write(Buffer.from(responseText));
+      res.status(200).send(Buffer.from(responseText));
     })
     .catch((err) => {
       const errText = err instanceof Error ? err.message : err.toString();
       const responseText = resTitle + errText;
-      res.setHeader('Content-Type', 'text/plain');
-      res.setHeader('Content-Length', responseText.length);
+      res.header('Content-Type', 'text/plain');
+      res.header('Content-Length', responseText.length);
       res.statusCode = 200;
-      res.write(Buffer.from(responseText));
+      res.status(200).send(Buffer.from(responseText));
     });
 };
 
-app.on('request', (req, res) => {
-  if (req.url === '/students') {
-    statusRequestHandler(req, res);
-  } else {
-    homeRequestHandler(req, res);
-  }
-});
+const PORT = 1245;
+const HOST = 'localhost';
+const app = Express();
+
+app.get('/', homeRequestHandler);
+app.get('/students', statusRequestHandler);
 
 app.listen(PORT, HOST, () => {
   process.stdout.write(`Server listening at -> http://${HOST}:${PORT}\n`);
