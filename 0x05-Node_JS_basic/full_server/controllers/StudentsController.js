@@ -22,6 +22,7 @@ class StudentsController {
           const students = value.map((student) => student.firstname);
           responseText += `\nNumber of students in ${key}: ${students.length}. List: ${students.join(', ')}`;
         });
+        responseText += '\n';
         res.status(200).send(responseText);
       })
       .catch((err) => {
