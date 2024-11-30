@@ -38,7 +38,7 @@ class StudentsController {
     if (!VALID_MAJORS.includes(major)) {
       res
         .status(500)
-        .send(`Major paramter must be ${VALID_MAJORS.join(' or ')}`);
+        .send(`Major parameter must be ${VALID_MAJORS.join(' or ')}`);
       return;
     }
 
