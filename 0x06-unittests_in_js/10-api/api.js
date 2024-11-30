@@ -11,7 +11,6 @@ app.get('/', (_, res) => {
 });
 
 app.post('/login', (req, res) => {
-  console.log(req.body);
   let username = '';
   if (req.body) {
     username = req.body.userName;
