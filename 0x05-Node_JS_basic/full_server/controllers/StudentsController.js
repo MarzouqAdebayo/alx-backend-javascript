@@ -7,7 +7,7 @@ function sorti(a, b) {
     return -1;
   }
   if (a.toLowerCase() > b.toLowerCase()) {
-    return +1;
+    return 1;
   }
   return 0;
 }
@@ -17,12 +17,12 @@ class StudentsController {
     const filePath = process.argv.length > 2 ? process.argv[2] : '';
     readDatabase(filePath)
       .then((studentGroups) => {
-        let responseText = 'This is a list of our students';
+        let responseText = 'This is a list of our students\n';
         Object.entries(studentGroups)
           .sort((a, b) => sorti(a[0], b[0]))
           .forEach(([key, value]) => {
             const students = value.map((student) => student.firstname);
-            responseText += `\nNumber of students in ${key}: ${students.length}. List: ${students.join(', ')}`;
+            responseText += `Number of students in ${key}: ${students.length}. List: ${students.join(', ')}\n`;
           });
         res.status(200).send(responseText);
       })
