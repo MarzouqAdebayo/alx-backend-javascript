@@ -24,7 +24,6 @@ class StudentsController {
             .sort(sorti);
           responseText += `\nNumber of students in ${key}: ${students.length}. List: ${students.join(', ')}`;
         });
-        responseText += '\n';
         res.status(200).send(responseText);
       })
       .catch((err) => {
