@@ -1,7 +1,15 @@
 const request = require('request');
 const { expect } = require('chai');
 
-describe('Simple API intergration test for /cart/:id', () => {
+describe('Simple API intergration test', () => {
+  it('/ route return correct response', (done) => {
+    request.get('http://localhost:7865', (_, res, body) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(body).to.be.equal('Welcome to the payment system');
+      done();
+    });
+  });
+
   it('/cart/:id route return correct response', (done) => {
     request.get('http://localhost:7865/cart/2', (_, res, body) => {
       expect(res.statusCode).to.be.equal(200);
