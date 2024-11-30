@@ -23,9 +23,7 @@ describe('Simple API intergration test for /cart/:id', () => {
       done();
     });
   });
-});
 
-describe('Simple API intergration test for /available_payments', () => {
   it('/available_payments route', (done) => {
     request.get('http://localhost:7865/available_payments', (_, res, body) => {
       expect(res.statusCode).to.be.equal(200);
@@ -38,9 +36,7 @@ describe('Simple API intergration test for /available_payments', () => {
       done();
     });
   });
-});
 
-describe('Simple API intergration test for /login', () => {
   it('/login route', (done) => {
     request.post(
       'http://localhost:7865/login',
