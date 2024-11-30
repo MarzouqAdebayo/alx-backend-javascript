@@ -19,9 +19,7 @@ class StudentsController {
       .then((studentGroups) => {
         let responseText = 'This is a list of our students';
         Object.entries(studentGroups).forEach(([key, value]) => {
-          const students = value
-            .map((student) => student.firstname)
-            .sort(sorti);
+          const students = value.map((student) => student.firstname);
           responseText += `\nNumber of students in ${key}: ${students.length}. List: ${students.join(', ')}`;
         });
         res.status(200).send(responseText);
