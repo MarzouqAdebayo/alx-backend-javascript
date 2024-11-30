@@ -17,12 +17,12 @@ class StudentsController {
     const filePath = process.argv.length > 2 ? process.argv[2] : '';
     readDatabase(filePath)
       .then((studentGroups) => {
-        let responseText = 'This is a list of our students\n';
+        let responseText = 'This is the list of our students';
         Object.entries(studentGroups)
           .sort((a, b) => sorti(a[0], b[0]))
           .forEach(([key, value]) => {
             const students = value.map((student) => student.firstname);
-            responseText += `Number of students in ${key}: ${students.length}. List: ${students.join(', ')}\n`;
+            responseText += `\nNumber of students in ${key}: ${students.length}. List: ${students.join(', ')}`;
           });
         res.status(200).send(responseText);
       })
