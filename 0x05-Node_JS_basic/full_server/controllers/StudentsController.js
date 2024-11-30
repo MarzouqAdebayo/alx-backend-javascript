@@ -18,12 +18,12 @@ class StudentsController {
     readDatabase(filePath)
       .then((studentGroups) => {
         let responseText = 'This is a list of our students';
-        Object.entries(studentGroups).forEach(([key, value]) => {
-          const students = value
-            .map((student) => student.firstname)
-            .sort(sorti);
-          responseText += `\nNumber of students in ${key}: ${students.length}. List: ${students.join(', ')}`;
-        });
+        Object.entries(studentGroups)
+          .sort((a, b) => sorti(a[0], b[0]))
+          .forEach(([key, value]) => {
+            const students = value.map((student) => student.firstname);
+            responseText += `\nNumber of students in ${key}: ${students.length}. List: ${students.join(', ')}`;
+          });
         res.status(200).send(responseText);
       })
       .catch((err) => {
